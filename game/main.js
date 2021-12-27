@@ -343,11 +343,12 @@ function Animateframe() {
                 const playagainText = new Text("Click to Play Again.", canvas.width/2, canvas.height/2, "center", "#242424", "40");
                 playagainText.Draw();
                 bgm.pause();
+                bgm.currentTime = 0;
                 failM.play();
                 canvas.addEventListener('click', function(){
+                    this.removeEventListener('click', arguments.callee);
                     running =true;
                     start();
-                    this.removeEventListener('click', arguments.callee);
                 });
                 return true;
             }
@@ -366,7 +367,7 @@ function Animateframe() {
 
         player.Animate();
         
-        gamespeed+= 0.0002;
+        gamespeed+= 0.003;
         requestAnimationFrame(Animateframe);
     }
 }

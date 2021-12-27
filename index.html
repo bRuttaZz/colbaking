@@ -27,21 +27,79 @@
         const failM = new Audio("game/sound/fail.mp3");
         const bgm = new Audio("game/sound/background.mp3");
     </script>
+    <style>
+        #loader { 
+            border: 12px solid #f3f3f3; 
+            border-radius: 50%; 
+            border-top: 12px solid #444444; 
+            width: 70px; 
+            height: 70px; 
+            animation: spin 1s linear infinite; 
+        } 
+
+        @keyframes spin { 
+        100% { 
+            transform: rotate(360deg); 
+        } 
+        } 
+
+        .spinner_loader { 
+            position: absolute; 
+            top: 0; 
+            bottom: 0; 
+            left: 0; 
+            right: 0; 
+            margin: auto; 
+        } 
+
+    </style>
     <link rel="icon" href="icon.png">
-    <title>CollbaKing</title>
+    <title>ColbaKing</title>
 </head>
 <body>
+    <!-- loader animation -->
+    <div class="spinner_loader" id = "loader"></div>
     
     <div class="bodybox">
         <br><br>
-        <h1>COLLBAKING</h1>
+        <h1>COLBAKING</h1>
         <br>
-        <p1>Tap the box and help collbaking to escape from the ghosts (Don't ask why is he chased by those
+        <p1>Tap the box and help colbaKing to escape from the ghosts (Don't ask why is he chased by those
             ghosts, anyway). Ignore your gut feeling if it frequently tells you that it's a clone of Chrome's dino-game .. <br><br>Tip : Tap to jump<br>
         (Special tip for computer browsers : Tap spacebar (or 'W') to jump and tap 'H' to make the King happy :) </p1>
         <br><br>
         <canvas id="game"></canvas>
     </div>
+    <script> 
+
+        document.onreadystatechange = function() { 
+
+            if (document.readyState !== "complete") { 
+
+                document.querySelector( 
+
+                  "body").style.visibility = "hidden"; 
+
+                document.querySelector( 
+
+                  "#loader").style.visibility = "visible"; 
+
+            } else { 
+
+                document.querySelector( 
+
+                  "#loader").style.display = "none"; 
+
+                document.querySelector( 
+
+                  "body").style.visibility = "visible"; 
+
+            } 
+
+        }; 
+
+    </script> 
+
     <script src='game/main.js'></script>
     <br><br><br>
     <footer style="font-size: 0.75rem;">
