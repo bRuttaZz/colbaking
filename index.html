@@ -59,7 +59,21 @@
 <body>
     <!-- loader animation -->
     <div class="spinner_loader" id = "loader"></div>
-    
+    <script> 
+        document.onreadystatechange = function() { 
+            if (document.readyState !== "complete") { 
+                document.querySelector( 
+                  "body").style.visibility = "hidden"; 
+                document.querySelector( 
+                  "#loader").style.visibility = "visible"; 
+            } else { 
+                document.querySelector( 
+                  "#loader").style.display = "none"; 
+                document.querySelector( 
+                  "body").style.visibility = "visible"; 
+            } 
+        }; 
+    </script> 
     <div class="bodybox">
         <br><br>
         <h1>COLBAKING</h1>
@@ -70,35 +84,7 @@
         <br><br>
         <canvas id="game"></canvas>
     </div>
-    <script> 
-
-        document.onreadystatechange = function() { 
-
-            if (document.readyState !== "complete") { 
-
-                document.querySelector( 
-
-                  "body").style.visibility = "hidden"; 
-
-                document.querySelector( 
-
-                  "#loader").style.visibility = "visible"; 
-
-            } else { 
-
-                document.querySelector( 
-
-                  "#loader").style.display = "none"; 
-
-                document.querySelector( 
-
-                  "body").style.visibility = "visible"; 
-
-            } 
-
-        }; 
-
-    </script> 
+    
 
     <script src='game/main.js'></script>
     <br><br><br>
