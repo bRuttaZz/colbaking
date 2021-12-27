@@ -351,6 +351,7 @@ function Animateframe() {
                     start();
                 });
                 return true;
+                
             }
         }
 
@@ -373,15 +374,19 @@ function Animateframe() {
 }
 
 let loaded = 0;
+let redundancy = 0;
 
 function oneloaded(){
-    loaded++;
-    if (loaded>=9){
+    if (loaded<10){
+        loaded++;
+    }
+    if (loaded>=9 && redundancy<1){
+        redundancy++;
         allloaded();
     }
 }
 function allloaded(){
-    // console.log("things are fine");
+    console.log("things are fine");
     sayAllOkay();
 }
 
@@ -450,5 +455,4 @@ window.onload = function(){
     ctx.closePath();
     const playagainText = new Text("Content is loading...", canvas.width/2, canvas.height/2, "center", "#242424", "20");
     playagainText.Draw();
-
 }
