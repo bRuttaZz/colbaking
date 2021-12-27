@@ -373,6 +373,7 @@ function Animateframe() {
 }
 
 
+
 // from loading section
 window.onload = function(){
     canvas.width = 660;
@@ -417,4 +418,4 @@ window.onload = function(){
     }
 
 
-// start();
+
