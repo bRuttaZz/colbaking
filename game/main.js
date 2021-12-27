@@ -7,6 +7,8 @@ const ctx = canvas.getContext('2d');
 var running = true;             // for controlling animation
 var loadingText_running = true;
 
+let audio_need = false;
+
 let score;
 let scoreText;
 let highscore;
@@ -240,6 +242,7 @@ function keyupHandler(evt){
 function start(){    
     startM.play();
     bgm.play();
+    audio_need = true;
     document.addEventListener('keydown', keydownHandler);
     document.addEventListener('touchstart', touchstartHandler);
     document.addEventListener('touchend', touchendHandler);
@@ -347,6 +350,7 @@ function Animateframe() {
                 playagainText.Draw();
                 bgm.pause();
                 bgm.currentTime = 0;
+                audio_need=false;
                 failM.play();
                 canvas.addEventListener('click', function(){
                     this.removeEventListener('click', arguments.callee);
@@ -498,3 +502,30 @@ function animateText(){
         requestAnimationFrame(animateText);
     }
 }
+
+
+
+
+// browser is not visible pause media
+// not effective in all cases still works
+
+var visibilityChange;
+if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support
+  visibilityChange = "visibilitychange";
+} else if (typeof document.msHidden !== "undefined") {
+  visibilityChange = "msvisibilitychange";
+} else if (typeof document.webkitHidden !== "undefined") {
+  visibilityChange = "webkitvisibilitychange";
+}
+//^different browsers^
+
+document.addEventListener(visibilityChange, function(){
+    if (audio_need){
+        if (bgm.paused){
+            bgm.play();
+        }
+        else{
+            bgm.pause();
+        }
+    }
+}, false);
