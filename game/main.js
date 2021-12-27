@@ -33,6 +33,18 @@ window.requestAnimationFrame =
            window.msRequestAnimationFrame;
 
 
+// audio bgm
+ 
+if (typeof bgm.loop == 'boolean'){
+    bgm.loop = true;
+}
+else{   
+    bgm.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+    }, false);
+}
+
 class Player {
     constructor (x, y, w, h){
         this.x = x;
@@ -93,6 +105,7 @@ class Player {
         if(this.grounded && this.jumpTimer == 0){
             this.jumpTimer = 1;
             this.dy = -this.jumpForce;
+            jumpM.play();
         }
         else if (this.jumpTimer > 0 && this.jumpTimer < 15){
             this.jumpTimer++;
@@ -222,7 +235,8 @@ function keyupHandler(evt){
 
 
 function start(){    
-
+    startM.play();
+    bgm.play();
     document.addEventListener('keydown', keydownHandler);
     document.addEventListener('touchstart', touchstartHandler);
     document.addEventListener('touchend', touchendHandler);
@@ -328,6 +342,8 @@ function Animateframe() {
 
                 const playagainText = new Text("Click to Play Again.", canvas.width/2, canvas.height/2, "center", "#242424", "40");
                 playagainText.Draw();
+                bgm.pause();
+                failM.play();
                 canvas.addEventListener('click', function(){
                     running =true;
                     start();
