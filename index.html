@@ -29,19 +29,10 @@
     </script>
     <style>
         #loader { 
-            border: 12px solid #f3f3f3; 
-            border-radius: 50%; 
-            border-top: 12px solid #444444; 
-            width: 70px; 
-            height: 70px; 
-            animation: spin 1s linear infinite; 
+            width: 60px; 
+            height: 60px; 
         } 
-
-        @keyframes spin { 
-        100% { 
-            transform: rotate(360deg); 
-        } 
-        } 
+ 
 
         .spinner_loader { 
             position: absolute; 
@@ -55,10 +46,6 @@
     </style>
     <link rel="icon" href="icon.png">
     <title>ColbaKing</title>
-</head>
-<body>
-    <!-- loader animation -->
-    <div class="spinner_loader" id = "loader"></div>
     <script> 
         document.onreadystatechange = function() { 
             if (document.readyState !== "complete") { 
@@ -74,6 +61,11 @@
             } 
         }; 
     </script> 
+</head>
+<body>
+    <!-- loader animation -->
+    <div class="spinner_loader" id = "loader"><img src="loading.gif" height="60px" width="60px"></div>
+    
     <div class="bodybox">
         <br><br>
         <h1>COLBAKING</h1>
