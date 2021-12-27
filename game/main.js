@@ -368,7 +368,7 @@ function Animateframe() {
 
         player.Animate();
         
-        gamespeed+= 0.003;
+        gamespeed+= 0.001;
         requestAnimationFrame(Animateframe);
     }
 }
