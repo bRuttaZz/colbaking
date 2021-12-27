@@ -372,13 +372,34 @@ function Animateframe() {
     }
 }
 
+let loaded = 0;
+
+function oneloaded(){
+    loaded++;
+    if (loaded>=9){
+        allloaded();
+    }
+}
+function allloaded(){
+    // console.log("things are fine");
+    sayAllOkay();
+}
+
+// checking all the assets are loaded up
+bgm.oncanplaythrough = oneloaded;
+startM.oncanplaythrough = oneloaded;
+failM.oncanplaythrough = oneloaded;
+jumpM.oncanplaythrough = oneloaded;
+nking.onload = oneloaded;
+fking.onload = oneloaded;
+hking.onload = oneloaded;
+ghost1.onload = oneloaded;
+ghost2.onload = oneloaded;
 
 
-// from loading section
-window.onload = function(){
-    canvas.width = 660;
-    canvas.height = 660;
-    
+// from here loading section
+function sayAllOkay(){
+
     // drawing background
     ctx.beginPath();
     ctx.fillStyle = "#b2b2b2";
@@ -415,7 +436,19 @@ window.onload = function(){
         this.removeEventListener('click', arguments.callee);
         start();
     }, false);
-    }
+}
 
 
+// before loading section
+window.onload = function(){
+    canvas.width = 660;
+    canvas.height = 660;
+    
+    ctx.beginPath();
+    ctx.fillStyle = "#b2b2b2";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.closePath();
+    const playagainText = new Text("Content is loading...", canvas.width/2, canvas.height/2, "center", "#242424", "20");
+    playagainText.Draw();
 
+}

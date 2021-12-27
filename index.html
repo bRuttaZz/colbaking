@@ -33,10 +33,18 @@
     </script>
     <style>
         #loader { 
-            width: 60px; 
-            height: 60px; 
+            border: 6px solid #f3f3f3; 
+            border-radius: 50%; 
+            border-top: 6px solid #444444; 
+            width: 40px; 
+            height: 40px; 
+            animation: spin 1s linear infinite; 
+            } 
+        @keyframes spin { 
+            100% { 
+                transform: rotate(360deg); 
+            } 
         } 
- 
         .spinner_loader { 
             position: absolute; 
             top: 0; 
@@ -62,7 +70,7 @@
                 "#loader").style.display = "none"; 
                 document.querySelector( 
                 "body").style.visibility = "visible"; 
-                },1500);
+                },200);
             } 
         }; 
 
@@ -70,7 +78,7 @@
 </head>
 <body>
     <!-- loader animation -->
-    <div class="spinner_loader" id = "loader"><img src="loading.gif" height="60px" width="60px"></div>
+    <div class="spinner_loader" id = "loader"></div>
     
     <div class="bodybox">
         <br><br>
