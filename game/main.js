@@ -1,8 +1,11 @@
 // variables
 const canvas = document.getElementById("game");
+canvas.width = 660;
+canvas.height = 660;
 const ctx = canvas.getContext('2d');
 
 var running = true;             // for controlling animation
+var loadingText_running = true;
 
 let score;
 let scoreText;
@@ -405,6 +408,7 @@ ghost2.onload = oneloaded;
 // from here loading section
 function sayAllOkay(){
 
+    loadingText_running = false;
     // drawing background
     ctx.beginPath();
     ctx.fillStyle = "#b2b2b2";
@@ -444,15 +448,53 @@ function sayAllOkay(){
 }
 
 
+
 // before loading section
+let dotCount = 0; 
+let frame = 50;
+const loadingText = new Text("Content is loading", canvas.width/2 - 100, canvas.height/2, "left", "#242424", "20");
+
+
 window.onload = function(){
-    canvas.width = 660;
-    canvas.height = 660;
     
     ctx.beginPath();
     ctx.fillStyle = "#b2b2b2";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.closePath();
-    const playagainText = new Text("Content is loading...", canvas.width/2, canvas.height/2, "center", "#242424", "20");
-    playagainText.Draw();
+    loadingText.Draw();
+    animateText();
+}
+
+function animateText(){
+    if (loadingText_running== true){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.beginPath();
+        ctx.fillStyle = "#b2b2b2";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.closePath();
+
+        frame--;
+        if (frame<=0){
+            dotCount++;
+            frame = 50;
+        }
+
+        if (dotCount>3){
+            dotCount = 0;
+        }
+        if (dotCount===0){
+            loadingText.t = "Content is loading";
+        }
+        else if (dotCount===1){
+            loadingText.t = "Content is loading.";
+        }
+        else if (dotCount===2){
+            loadingText.t = "Content is loading..";
+        }
+        else {
+            loadingText.t = "Content is loading...";
+        }
+        loadingText.Draw();
+        requestAnimationFrame(animateText);
+    }
 }
