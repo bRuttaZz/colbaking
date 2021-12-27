@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="style.css" />
+    <script type="text/javascript">
+        var nking = document.createElement("img");
+        nking.src = "game/images/king.png";
+        var fking = document.createElement("img");
+        fking.src = "game/images/king_fail.png";
+        var hking = document.createElement("img");
+        hking.src = "game/images/king_hu.png"
+        var ghost1 = document.createElement("img");
+        ghost1.src = "game/images/ghost1.png";
+        var ghost2 = document.createElement("img");
+        ghost2.src = "game/images/ghost2.png";
+
+        var enemy = [ghost1, ghost2];
+
+        var playbutton = document.createElement("img");
+        playbutton.src = "game/images/play.png";
+    </script>
+    <title>CollbaKing</title>
+</head>
+<body>
+    
+    <div class="bodybox">
+        <br><br>
+        <h1>COLLBAKING</h1>
+        <br>
+        <p1>Tap the box and help collbaking to escape from the ghosts (Don't ask why is he chased by those
+            ghosts, anyway). <br><br>Tip : Tap to jump<br>
+        (Special tip for computer browsers : Tap spacebar (or 'W') to jump and tap 'H' to make the King happy :) </p1>
+        <br><br>
+        <canvas id="game"></canvas>
+    </div>
+    <script src='game/main.js'></script>
+    <br><br><br>
+    <footer style="font-size: 0.75rem;">
+        <center>author : <a href="https://github.com/bruttazz/" target="_blank" style="color:#000000; text-decoration: none;">@bRuttaZz</a></center>
+    </footer>
+</body>
+</html>
