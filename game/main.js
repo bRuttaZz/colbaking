@@ -334,6 +334,7 @@ function Animateframe() {
                 player.y + player.h -15 > o.y
             ){
                 scoreText.Draw();
+                keys = {};              // for avoiding accidental jumps
                 obstacles = [];
                 score = 0;
                 gamespeed = 8;
