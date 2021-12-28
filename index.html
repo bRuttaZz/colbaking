@@ -45,10 +45,6 @@
         const failM = new Audio("game/sound/fail.mp3?" + new Date().getTime());
         failM.importance = "high";
 
-        // bgm.preload = "auto";
-        // jumpM.preload = "auto";
-        // startM.preload = "auto";
-        // failM.preload = "auto";
     </script>
     <style>
         #loader { 
@@ -62,8 +58,8 @@
         @keyframes spin { 
             100% { 
                 transform: rotate(360deg); 
+                } 
             } 
-        } 
         .spinner_loader { 
             position: absolute; 
             top: 0; 
@@ -109,10 +105,11 @@
         <br><br>
         <canvas id="game"></canvas>
     </div>
-    
 
     <script src='game/main.js' defer></script>
+
     <br><br><br>
+
     <footer style="font-size: 0.75rem;">
         <center>author : <a href="https://github.com/bruttazz/" target="_blank" style="color:#000000; text-decoration: none;">@bRuttaZz</a></center>
     </footer>
