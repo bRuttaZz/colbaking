@@ -455,10 +455,6 @@ function sayAllOkay(){
 }
 
 
-
-
-
-
 // before loading section
 let dotCount = 0; 
 let error_count = 0 ;
