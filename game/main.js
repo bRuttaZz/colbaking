@@ -18,7 +18,8 @@ let gravity;
 let obstacles = [];
 let noices = [];            // ingnore the grammar :)
 let noicesOut = [];
-let gamespeed;
+let initGamespeed = 8;      // 8 default
+let gamespeed = initGamespeed;
 let keys = {};
 let king = nking;
 
@@ -28,7 +29,7 @@ let obstacle_type = [0,1,0,1,0,1];
 let spawnTime = [200, 100, 250]
 let spawnTimer = spawnTime[Math.floor(Math.random() * spawnTime.length)];
 
-let initNoice_spawnTimer = 5;
+let initNoice_spawnTimer = 3;
 let noice_spawTimer = initNoice_spawnTimer;
 
 window.requestAnimationFrame =
@@ -56,6 +57,7 @@ class Player {
         this.y = y;
         this.w = w;
         this.h = h;
+        
 
         this.dy = 0;
         this.jumpForce = 15;
@@ -174,7 +176,7 @@ class Noice{
         this.w = w;
         this.c = c;
     
-        this.dx = -gamespeed +3;
+        this.dx = -initGamespeed +3;
     }
 
     Update (){
@@ -201,8 +203,8 @@ function random_num(min, max){
 // spawning noice
 function spawnNoice_beginiing (x){
     let y = random_num(canvas.height-90, canvas.height+10);
-    let noiceout = new Noice(x, y, 5, '#022900');
-    noicesOut.push(noiceout);
+    let noice = new Noice(x, y, 5, '#022900');
+    noices.push(noice);
 }
 
 function spawnNoice (){
@@ -252,7 +254,6 @@ function start(){
 
     ctx.font = "20px sans-serif";
 
-    gamespeed = 8;
     gravity = 1;
     
     score = 0;
@@ -328,16 +329,16 @@ function Animateframe() {
             // fail condition
             o.Update();
             if (
-                player.x < o.x+o.w -15 &&
+                player.x +20< o.x+o.w  &&
                 player.x + player.w -15 > o.x  &&
-                player.y < o.y + o.h -15 &&
+                player.y < o.y + o.h  &&
                 player.y + player.h -15 > o.y
             ){
                 scoreText.Draw();
                 keys = {};              // for avoiding accidental jumps
                 obstacles = [];
                 score = 0;
-                gamespeed = 8;
+                gamespeed = initGamespeed;
                 running = false;
                 king = fking;
                 highscoreText.Draw();
@@ -438,12 +439,12 @@ function sayAllOkay(){
     ctx.drawImage(playbutton,canvas.width/2 -  (610/canvas.getBoundingClientRect().width)*50, canvas.height/2 -75,(610/canvas.getBoundingClientRect().width)*200, 150 )
     ctx.closePath();
     
-    for (let i=0 ; i<canvas.width ; i+=50){
+    for (let i=0 ; i<canvas.width ; i+=20){
         spawnNoice_beginiing(i);
     }
-    // noices = noicesOut;
-    for (let i=0 ; i < noicesOut.length ; i++){
-        noicesOut[i].Draw();
+    
+    for (let i=0 ; i < noices.length ; i++){
+        noices[i].Update();
     }
 
     //Binding the click event on the canvas
