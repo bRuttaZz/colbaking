@@ -29,7 +29,7 @@ let obstacle_type = [0,1,0,1,0,1];
 let spawnTime = [200, 100, 250]
 let spawnTimer = spawnTime[Math.floor(Math.random() * spawnTime.length)];
 
-let initNoice_spawnTimer = 3;
+let initNoice_spawnTimer = 5;           // floor noice
 let noice_spawTimer = initNoice_spawnTimer;
 
 window.requestAnimationFrame =
@@ -439,7 +439,7 @@ function sayAllOkay(){
     ctx.drawImage(playbutton,canvas.width/2 -  (610/canvas.getBoundingClientRect().width)*50, canvas.height/2 -75,(610/canvas.getBoundingClientRect().width)*200, 150 )
     ctx.closePath();
     
-    for (let i=0 ; i<canvas.width ; i+=20){
+    for (let i=0 ; i<canvas.width ; i+=30){
         spawnNoice_beginiing(i);
     }
     
