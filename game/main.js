@@ -384,7 +384,7 @@ let loaded = 0;
 let redundancy = 0;
 
 function oneloaded(){
-    if (loaded<10){
+    if (loaded<9){
         loaded++;
     }
     if (loaded>=9 && redundancy<1){
@@ -393,7 +393,7 @@ function oneloaded(){
     }
 }
 function allloaded(){
-    console.log("things are fine");
+    // console.log("things are fine");
     sayAllOkay();
 }
 

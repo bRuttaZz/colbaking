@@ -7,29 +7,48 @@
     <link rel="shortcut icon" href="#">
     <link rel="stylesheet" href="style.css" />
     <script type="text/javascript">
+        const bgm = new Audio("game/sound/background.mp3?" + new Date().getTime());
+        bgm.importance = "high";
+        
         var nking = document.createElement("img");
         nking.src = "game/images/king.png?" + new Date().getTime();
+        nking.importance = "high";
+
         var fking = document.createElement("img");
+        fking.importance = "high";
         fking.src = "game/images/king_fail.png?" + new Date().getTime();
+        
         var hking = document.createElement("img");
         hking.src = "game/images/king_hu.png?" + new Date().getTime();
+        hking.importance = "high";
+
         var ghost1 = document.createElement("img");
+        ghost1.importance = "high";
         ghost1.src = "game/images/ghost1.png?" + new Date().getTime();
+        
         var ghost2 = document.createElement("img");
         ghost2.src = "game/images/ghost2.png?" + new Date().getTime();
+        ghost2.importance = "high";
 
         var enemy = [ghost1, ghost2];
 
         var playbutton = document.createElement("img");
         playbutton.src = "game/images/play.png?" + new Date().getTime();
+        playbutton.importance = "high";
+
         const jumpM = new Audio("game/sound/jump.mp3?" + new Date().getTime());
+        jumpM.importance = "high";
+
         const startM = new Audio("game/sound/start.mp3?" + new Date().getTime());
+        startM.importance = "high";
+
         const failM = new Audio("game/sound/fail.mp3?" + new Date().getTime());
-        const bgm = new Audio("game/sound/background.mp3?" + new Date().getTime());
-        bgm.preload = "auto";
-        jumpM.preload = "auto";
-        startM.preload = "auto";
-        failM.preload = "auto";
+        failM.importance = "high";
+
+        // bgm.preload = "auto";
+        // jumpM.preload = "auto";
+        // startM.preload = "auto";
+        // failM.preload = "auto";
     </script>
     <style>
         #loader { 
