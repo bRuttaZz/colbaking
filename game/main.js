@@ -147,19 +147,20 @@ class Obstacle{
 }
 
 class Text{
-    constructor(t, x,y, align, c, size){
+    constructor(t, x,y, align, c, size, family = "sans-serif"){
         this.t = t;
         this.x = x;
         this.y = y;
         this.a = align;
         this.c = c;
         this.s = size;
+        this.f = family;
     }
 
     Draw(){
         ctx.beginPath();
         ctx.fillStyle = this.c;
-        ctx.font = this.s + "px sans-serif";
+        ctx.font = this.s + "px "+this.f;
         ctx.textAlign = this.a;
         ctx.fillText(this.t, this.x, this.y);
         ctx.closePath();
@@ -453,11 +454,23 @@ function sayAllOkay(){
 
 
 
+
+
+
 // before loading section
 let dotCount = 0; 
+let error_count = 0 ;
 let frame = 50;
-const loadingText = new Text("Content is loading", canvas.width/2 - 100, canvas.height/2, "left", "#242424", "20");
-
+const loadingText = new Text("Content is loading", canvas.width/2 - 130, canvas.height/2, "left", "#242424", "25");
+const addLine1 = new Text("( smells something wrong :/",canvas.width/2 , canvas.height/2 -50, "center", "#242424", "20");
+const addLine2 = new Text("It could be,",80 , canvas.height/2 -15, "left", "#242424", "20");
+const addLine3 = new Text("1.Connectivity issues ",80 , canvas.height/2 + 20, "left", "#f72020", "20");
+const addLine4 = new Text("(try refresh the tab and check your connectivity)",110 , canvas.height/2 + 55, "left", "#242424", "20");
+const addLine5 = new Text("2.Browser compatibility issues ",80 , canvas.height/2 + 90, "left", "#f72020", "20");
+const addLine6 = new Text("(Throw away your uncivilised browser, if it's :)",110, canvas.height/2 + 125, "left", "#242424", "20");
+const addLine7 = new Text("3.Server side issues (The worst senario)",80 , canvas.height/2 + 160, "left", "#f72020", "20");
+const addLine8 = new Text("(Sorry, probabily you can't fix this)",110 , canvas.height/2 + 195, "left", "#242424", "20");
+const addLine9 = new Text("That's a lot, BTW I'm sad that you cant load this fantastic game )",canvas.width/2 , canvas.height/2 + 260, "center", "#141414", "17");
 
 window.onload = function(){
     
@@ -480,28 +493,89 @@ function animateText(){
         frame--;
         if (frame<=0){
             dotCount++;
+            error_count++;
             frame = 50;
         }
-
         if (dotCount>3){
             dotCount = 0;
         }
-        if (dotCount===0){
-            loadingText.t = "Content is loading";
+
+        if(error_count>=25){        //48
+            error_count=25;
+            loadingText.y = canvas.height / 2 -150;
+            if (dotCount===0){
+                loadingText.t = "Content is loading";
+                addLine1.Draw();
+                addLine2.Draw();
+                addLine3.Draw();
+                addLine4.Draw();
+                addLine5.Draw();
+                addLine6.Draw();
+                addLine7.Draw();
+                addLine8.Draw();
+                addLine9.Draw();
+            }
+            else if (dotCount===1){
+                loadingText.t = "Content is loading.";
+                addLine1.Draw();
+                addLine2.Draw();
+                addLine3.Draw();
+                addLine4.Draw();
+                addLine5.Draw();
+                addLine6.Draw();
+                addLine7.Draw();
+                addLine8.Draw();
+                addLine9.Draw();
+            }
+            else if (dotCount===2){
+                loadingText.t = "Content is loading..";
+                addLine1.Draw();
+                addLine2.Draw();
+                addLine3.Draw();
+                addLine4.Draw();
+                addLine5.Draw();
+                addLine6.Draw();
+                addLine7.Draw();
+                addLine8.Draw();
+                addLine9.Draw();
+                }
+            else {
+                loadingText.t = "Content is loading...";
+                addLine1.Draw();
+                addLine2.Draw();
+                addLine3.Draw();
+                addLine4.Draw();
+                addLine5.Draw();
+                addLine6.Draw();
+                addLine7.Draw();
+                addLine8.Draw();
+                addLine9.Draw();
+            }
         }
-        else if (dotCount===1){
-            loadingText.t = "Content is loading.";
+        else{
+            if (dotCount===0){
+                loadingText.t = "Content is loading";
+            }
+            else if (dotCount===1){
+                loadingText.t = "Content is loading.";
+            }
+            else if (dotCount===2){
+                loadingText.t = "Content is loading..";
+            }
+            else {
+                loadingText.t = "Content is loading...";
+            }
         }
-        else if (dotCount===2){
-            loadingText.t = "Content is loading..";
-        }
-        else {
-            loadingText.t = "Content is loading...";
-        }
+        
         loadingText.Draw();
         requestAnimationFrame(animateText);
     }
 }
+
+
+
+
+
 
 
 
