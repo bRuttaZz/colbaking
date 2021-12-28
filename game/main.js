@@ -577,7 +577,6 @@ function animateText(){
 
 
 
-
 // browser is not visible pause media
 // not effective in all cases still works
 
