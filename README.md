@@ -1,6 +1,6 @@
 # COLBAKING
 ---
-Nothing much fancy about it, [ColbaKing](bruttazz.github.io/colbaking "Game") is just a regular old school javascript game (more like a clone of Chrome's dino-game).
+Nothing much fancy about it, [ColbaKing](https://bruttazz.github.io/colbaking "Game") is just a regular old school javascript game (more like a clone of Chrome's dino-game).
 Uses basic javascript's `requestAnimation` method to manipulate HTML5 canvas.
 <img src="game/preview.png" width=300>
 
